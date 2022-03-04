@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>My Movie</title>
+</head>
+<body>
+    <section id="header">
+        <navigation-bar></navigation-bar>
+    </section>
+
+    <section id="content">
+        <div id="upcoming-movie" class="container">
+            <div class="title">
+                <h2>Upcoming Movie</h2>
+            </div>
+            <div id="upcoming-movie-list" class="movie-list">
+
+            </div>
+        </div>
+    </section>
+
+    <x-footer></x-footer>
+
+    </script>
+
+
+    <!-- template scripts -->
+    <script src="assets/components/header.js"></script>
+    <script src="assets/components/hero-banner.js"></script>
+    <script src="assets/components/footer.js"></script>
+    <!-- end template scripts -->
+
+    <!-- global scripts -->
+    <script src="assets/js/env.js"></script>
+    <!-- end global scripts -->
+
+    <script>
+        const getMovieUpcoming = async () => {
+            const res = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${APIKEY}`)
+            return await res.json();
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            getMovieUpcoming().then((data) => {
+                const movies = data.results
+                    
+                let HTMLCard = ''
+                const container = document.getElementById('upcoming-movie-list')
+                
+                for (let index = 0; index < movies.length ; index++) {
+                    const data = movies[index]
+                    const year = new Date(data.release_date).getFullYear()
+
+                    HTMLCard += `
+                    <a href="/detail.html?id=${data.id}" class="card">
+                        <img class="card__image" src="${IMAGEBASEURL}/${data.poster_path}"/>
+                        <div class="card__content">
+                            <p class="card__title">${data.title} (${year})</p>
+                        </div>
+                    </a>
+                    `
+                }
+
+                container.innerHTML = HTMLCard
+            });
+
+            
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+a{
+    color: unset;
+    text-decoration: none;
+}
+.container{
+    margin: 0 75px;
+}
+#header-hero{
+    padding: 40px 0;
+    background: linear-gradient(
+        209.76deg, rgb(39, 221, 161) 0%, rgb(50, 147, 208) 51.75%, rgb(62, 145, 215) 63.87%, rgb(2, 110, 218) 100%);
+    margin-bottom: 30px;
+}
+#header{
+    background: linear-gradient(
+        209.76deg, rgb(39, 221, 161) 0%, rgb(50, 147, 208) 51.75%, rgb(62, 145, 215) 63.87%, rgb(2, 110, 218) 100%);
+}
+header{
+    color: #fff;
+    padding: 20px 0;
+    margin-bottom: 25px;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+.nav__menu{
+    display: flex;
+    gap: 40px;
+}
+.nav__menu__link{
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+.nav__menu__link:hover{
+    color: #046fda;
+}
+#hero{
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+#hero .container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 280px;
+    overflow: hidden;
+}
+.hero__title h1{
+    font-size: 80px;
+}
+.hero__title p{
+    font-size: 20px;
+}
+.hero__thumb{
+    text-align: center;
+}
+.hero__thumb img{
+    height: 400px;
+    border-radius: 150px;
+}
+#content{
+    padding: 20px 0;
+}
+#content .container{
+    margin-bottom: 50px;
+}
+#content .container .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.movie-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.card {
+    width: 100%;
+    max-width: 200px;
+    background-color: #333;
+    border-radius: 6px;
+    overflow: hidden;
+    color: #fff;
+    box-shadow: 0 0px 10px rgb(0 0 0 / 18%);
+    transition: all 0.5s;
+}
+.card:hover{
+    box-shadow: 0 0px 10px #368cd8;
+}
+.card__image {
+    width: 100%;
+}
+.card__content {
+    padding: 10px;
+}
+#detail-movie{
+    display: flex;
+    gap: 20px;
+}
+#detail-movie img{
+    border-radius: 30px;
+}
+footer{
+    background-color: #368cd8;
+    padding: 20px 0;
+    color: #fff;
+}
+footer .container{
+    display: flex;
+    justify-content: space-between;
+}
+footer .container a{
+    color: #27dba2;
+}

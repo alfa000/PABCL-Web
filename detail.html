@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>My Movie</title>
+</head>
+<body>
+    <section id="header">
+        <navigation-bar></navigation-bar>
+    </section>
+
+    <section id="content">
+        <div class="container">
+            <div class="title">
+            </div>
+            <div id="detail-movie">
+                <img src="" alt="poster" width="200px">
+                <div class="desc">
+                    <h2 class="title">Popular Movie</h2>
+                    <p style="margin-bottom: 10px;">
+                        <i class="fa-solid fa-calendar" style="color: #368cd8;"></i>
+                        <span class="release-date" ></span>
+                    </p>
+                    <p style="margin-bottom: 10px;">
+                        <i class="fa-solid fa-clock" style="color: #368cd8;"></i>
+                        <span class="clock"></span>
+                    </p>
+                    <p style="margin-bottom: 10px;">
+                        <i class="fa-solid fa-star" style="color: #ffc400;"></i>
+                        <span class="vote" ></span>
+                    </p>
+                    <p class="overview">Popular Movie</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <x-footer></x-footer>
+
+    </script>
+
+
+    <!-- template scripts -->
+    <script src="assets/components/header.js"></script>
+    <script src="assets/components/hero-banner.js"></script>
+    <script src="assets/components/footer.js"></script>
+    <!-- end template scripts -->
+
+    <!-- global scripts -->
+    <script src="assets/js/env.js"></script>
+    <!-- end global scripts -->
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const movie_id = params.get('id');
+        
+        const getMovieDetail = async () => {
+            const res = await fetch(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=${APIKEY}`)
+            return await res.json();
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            getMovieDetail().then((data) => {
+                const movie = data
+                const year = new Date(movie.release_date).getFullYear()
+
+                document.querySelector('#detail-movie img').src = IMAGEBASEURL+'/'+movie.poster_path;
+                document.querySelector('.desc .title').innerHTML = movie.original_title+` (${year})`;
+                document.querySelector('.desc .release-date').innerHTML = movie.release_date;
+                document.querySelector('.desc .clock').innerHTML = movie.runtime;
+                document.querySelector('.desc .vote').innerHTML = movie.vote_average;
+                document.querySelector('.desc .overview').innerHTML = movie.overview;
+            });
+        });
+
+    </script>
+</body>
+</html>
