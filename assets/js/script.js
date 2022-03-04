@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const year = new Date(data.release_date).getFullYear()
 
             HTMLCard += `
-            <a href="/detail.html?id=${data.id}" class="card">
+            <a href="detail.html?id=${data.id}" class="card">
                 <img class="card__image" src="${IMAGEBASEURL}/${data.poster_path}"/>
                 <div class="card__content">
                     <p class="card__title">${data.title} (${year})</p>
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const year = new Date(data.release_date).getFullYear()
 
             HTMLCard += `
-            <a href="/detail.html?id=${data.id}" class="card">
+            <a href="detail.html?id=${data.id}" class="card">
                 <img class="card__image" src="${IMAGEBASEURL}/${data.poster_path}"/>
                 <div class="card__content">
                     <p class="card__title">${data.title} (${year})</p>
@@ -73,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const year = new Date(data.release_date).getFullYear()
 
             HTMLCard += `
-            <a href="/detail.html?id=${data.id}" class="card">
+            <a href="detail.html?id=${data.id}" class="card">
                 <img class="card__image" src="${IMAGEBASEURL}/${data.poster_path}"/>
                 <div class="card__content">
                     <p class="card__title">${data.title} (${year})</p>
